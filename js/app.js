@@ -101,7 +101,7 @@ const cargarEgresos = () =>{
 const crearEgresoHTML = (egreso) =>{
     let egresosTempleate = `
         <div class="elemento limpiarEstilos">
-            <div class="elemento_descripcion">${egresos.descripcion}</div>
+            <div class="elemento_descripcion">${egreso.descripcion}</div>
             <div class="derecha limpiarEstilos">
                 <div class="elemento_valor">${formatoMoneda(egreso.valor)}</div>
                 <div class="elemento_eliminar">
