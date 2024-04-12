@@ -14,6 +14,8 @@ let cargarCabecero = () =>{
     let presupuesto = totalIngresos()-totalEgresos();
     let porcentajeEgreso = totalEgresos()/totalIngresos();
     document.getElementById("presupuesto").innerHTML = formatoMoneda(presupuesto);
+    var porcentajeHtml = document.getElementById("porcentaje");
+    porcentajeHtml = innerHTML = formatoPorcentaje(porcentajeEgreso);
     // document.getElementById("porcentaje").innerHTML = formatoPorcentaje(porcentajeEgreso);
     document.getElementById("ingreso").innerHTML = formatoMoneda(totalIngresos());
     document.getElementById("egreso").innerHTML = formatoMoneda(totalEgresos());
@@ -66,7 +68,7 @@ const cargarIngresos = () =>{
 const crearIngresos = (ingreso) =>{
     let ingresosTempleate = `
         <div class="elemento limpiarEstilos">
-            <div class="elemento_descripcion">${ingresos.descripcion}</div>
+            <div class="elemento_descripcion">${ingreso.descripcion}</div>
             <div class="derecha limpiarEstilos">
                 <div class="elemento_valor">${formatoMoneda(ingreso.valor)}</div>
                 <div class="elemento_eliminar">
