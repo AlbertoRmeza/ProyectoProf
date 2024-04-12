@@ -14,7 +14,7 @@ let cargarCabecero = () =>{
     let presupuesto = totalIngresos()-totalEgresos();
     let porcentajeEgreso = totalEgresos()/totalIngresos();
     document.getElementById("presupuesto").innerHTML = formatoMoneda(presupuesto);
-    document.getElementById("porcentaje").innerHTML = formatoPorcentaje(porcentajeEgreso);
+    // document.getElementById("porcentaje").innerHTML = formatoPorcentaje(porcentajeEgreso);
     document.getElementById("ingreso").innerHTML = formatoMoneda(totalIngresos());
     document.getElementById("egreso").innerHTML = formatoMoneda(totalEgresos());
 }
@@ -40,13 +40,17 @@ let totalEgresos = () =>{
 // Formato moneda
 
 const formatoMoneda = (valor) =>{
-    return valor.toLocateString("es-MX", {style: "currency", currency: "MXN", minimumFractionDigits:2});
+    // return valor.toLocateString("es-MX", {style: "currency", currency: "MXN"});
+    let moneda = valor.toLocaleString("es-MX",{style:"currency", currency:"MXN"});
+    return moneda;
 }
 
 // Formato porcentaje
 
 const formatoPorcentaje = (valor) => {
-    return valor.toLocateString("es-MX", {style: "percent", minimumFractionDigits:2});
+    // return valor.toLocateString("es-MX", {style: "percent", minimumFractionDigits:2});
+    let porcent = valor.toLocaleString("es-MX",{style:"percent", minimumFractionDigits:2});
+    return porcent;
 }
 
 // Funciones para los Ingresos
@@ -123,6 +127,7 @@ const agregarDato = () => {
     let tipo = forma["tipo"];
     let descripcion = forma["descripcion"];
     let valor = forma["valor"];
+    console.log(descripcion)
     if(descripcion.value !== "" &&  valor.value !== ""){
         if(tipo.value === 'ingreso'){
             ingresos.push(new Ingresos(descripcion.value, valor.value)) // Forma corta
