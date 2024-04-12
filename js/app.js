@@ -67,7 +67,7 @@ const crearIngresos = (ingreso) =>{
                 <div class="elemento_valor">${formatoMoneda(ingreso.valor)}</div>
                 <div class="elemento_eliminar">
                     <button type="button" class="elemento_eliminar--btn">
-                        <ion-icon name="close-circle-outline" onclick=eliminarIngresos(${ingreso.id})"></ion-icon>
+                        <ion-icon name="close-circle-outline" onclick=eliminarIngreso(${ingreso.id})"></ion-icon>
                     </button>
                 </div>
             </div>
@@ -83,6 +83,37 @@ const eliminarIngreso = (id) => {
 }
 
 // Funciones para los Egresos van en esta otra sección
+
+const cargarEgresos = () =>{
+    let egresosHTML = "";
+    for (egreso of egresos){
+        egresosHTML += crearEgresoHTML(egreso);
+    }
+    document.getElementById("lista-egresos").innerHTML = egresosHTML;
+}
+
+const crearEgresoHTML = (egreso) =>{
+    let egresosTempleate = `
+        <div class="elemento limpiarEstilos">
+            <div class="elemento_descripcion">${egresos.descripcion}</div>
+            <div class="derecha limpiarEstilos">
+                <div class="elemento_valor">${formatoMoneda(egreso.valor)}</div>
+                <div class="elemento_eliminar">
+                    <button type="button" class="elemento_eliminar--btn">
+                        <ion-icon name="close-circle-outline" onclick=eliminarEgreso(${egreso.id})"></ion-icon>
+                    </button>
+                </div>
+            </div>
+        </div>`
+    return egresosTempleate;
+}
+
+const eliminarEgreso = (id) => {
+    let egresoEliminar = egresos.findIndex(egresos => egresos.id === id);
+    egreso.splice(egresoEliminar, 1);
+    cargarCabecero();
+    cargarEgresos();
+}
 
 
 // Función para agregarDato
