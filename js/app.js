@@ -26,7 +26,7 @@ let cargarCabecero = () =>{
 let totalIngresos = () =>{
     let totalIngresos = 0;
     for(let ingreso of ingresos){
-        totalIngresos += ingreso.valor;
+        totalIngresos += Number(ingreso.valor);
     }
     return totalIngresos;
 }
@@ -34,7 +34,7 @@ let totalIngresos = () =>{
 let totalEgresos = () =>{
     let totalEgresos = 0;
     for(let egreso of egresos){
-        totalEgresos += egreso.valor;
+        totalEgresos += Number(egreso.valor);
     }
     return totalEgresos;
 }
@@ -66,6 +66,7 @@ const cargarIngresos = () =>{
 }
 
 const crearIngresos = (ingreso) =>{
+    let elimina = ingreso.id -1
     let ingresosTempleate = `
         <div class="elemento limpiarEstilos">
             <div class="elemento_descripcion">${ingreso.descripcion}</div>
@@ -73,7 +74,8 @@ const crearIngresos = (ingreso) =>{
                 <div class="elemento_valor">${formatoMoneda(ingreso.valor)}</div>
                 <div class="elemento_eliminar">
                     <button type="button" class="elemento_eliminar--btn">
-                        <ion-icon name="close-circle-outline" onclick=eliminarIngreso(${ingreso.id})"></ion-icon>
+                        <ion-icon name="close-circle-outline" onclick=eliminarIngreso(${elimina})">
+                        </ion-icon>
                     </button>
                 </div>
             </div>
